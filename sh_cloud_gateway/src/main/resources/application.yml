@@ -1,0 +1,47 @@
+###配置服务端口
+server:
+  port: 8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      fetch-registry: true
+  instance:
+    hostname: localhost
+    appname: xiaomo-gateway
+    instance-id: sh_xiaomo_gateway
+    prefer-ip-address: true
+spring:
+  application:
+    name: gateway-cloud5002
+  cloud:
+    gateway:
+      routes:
+      - id: study-predicates-route
+
+        uri: https://www.baidu.com
+        predicates:
+            #匹配所有以/consumer/product/开头的请求，匹配到以后使用Ribbon的负载均衡请求Eureka注册中心的SERVICE-CONSUMER9002服务
+        - Path=/xiaomo/**
+---
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: xiaomo_gateway
+          uri: https://www.baidu.com
+          predicates:
+            - After=2021-01-20T17:42:47.789-07:00[America/Denver]
+  profiles: xiaomo_gateway
+---
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          uri: https://www.baidu.com
+          predicates:
+            - Path=/demo/**
+  config:
+    activate:
+      on-profile: path_route

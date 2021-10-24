@@ -1,0 +1,15 @@
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false # 是否同步其他Server的列表数据  如果是集群需要配置成true , 单点的配置为false
+    registry-with-eureka: false #false 表示自己端就是注册中心，我的职责就是维护实例，并不需要检索服务
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  cloud:
+    service-registry:
+      auto-registration:
+        enabled: false # 配置非自动注册
