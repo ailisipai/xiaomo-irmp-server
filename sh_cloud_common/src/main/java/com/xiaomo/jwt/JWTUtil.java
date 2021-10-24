@@ -1,33 +1,35 @@
-package com.xiaomo.gateway.jwt;
+package com.xiaomo.jwt;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.commons.codec.binary.Base64;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * JWT工具类
- *
- * @author wpp
- * @Date
+ * @author xiaomo
  */
-public class JwtUtil {
+public class JWTUtil {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JwtUtil.class);
+
+
     /**
      * 秘钥根据实际项目中使用设置
      */
     public static final String KEY = "022bdc63c3c5a45879ee6581508b9d03adfec4a4658c0ab3d722e50c91a351c42c231cf43bb8f86998202bd301ec52239a74fc0c9a9aeccce604743367c9646b";
 
+    /**
+     * token 生效时间设置
+     */
+    public static final long TOKEN_EXPIRE_TIME = 7200 * 1000;
+
+    private static final String ISSUER = "xiaomo";
     /**
      * 由字符串生成加密KEY
      *
@@ -100,19 +102,4 @@ public class JwtUtil {
                 .parseClaimsJws(jwt).getBody();     //设置需要解析的jwt
         return claims;
     }
-    public static boolean checkToken(String jwtToken, ObjectMapper objectMapper) throws Exception {
-        //TODO 根据自己的业务修改
-        Claims claims = JwtUtil.parseJWT(jwtToken);
-        String subject = claims.getSubject();
-        JwtModel jwtModel = objectMapper.readValue(subject, JwtModel.class);
-
-        //TODO 对jwt里面的用户信息做判断
-
-        //获取token的过期时间，和当前时间作比较，如果小于当前时间，则token过期
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        Date expiration = claims.getExpiration();
-        LOGGER.info("======== token的过期时间：" + df.format(expiration));
-        return true;
-    }
-
 }

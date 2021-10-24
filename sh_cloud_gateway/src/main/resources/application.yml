@@ -16,32 +16,37 @@ spring:
     name: gateway-cloud5002
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
       routes:
-      - id: study-predicates-route
+        - id: baidu
+          uri: http://localhost:8761/
+          predicates:
+            - Path=/baidu/**
+          filters:
+            - StripPrefix=1
 
-        uri: https://www.baidu.com
-        predicates:
-            #匹配所有以/consumer/product/开头的请求，匹配到以后使用Ribbon的负载均衡请求Eureka注册中心的SERVICE-CONSUMER9002服务
-        - Path=/xiaomo/**
----
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: xiaomo_gateway
-          uri: https://www.baidu.com
+
+
+        - id: sina
+          uri: http://movie.hs6356.com/
           predicates:
-            - After=2021-01-20T17:42:47.789-07:00[America/Denver]
-  profiles: xiaomo_gateway
----
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: path_route
-          uri: https://www.baidu.com
-          predicates:
-            - Path=/demo/**
-  config:
-    activate:
-      on-profile: path_route
+            - Path=/sina/**
+          filters:
+            - StripPrefix=1
+org:
+  my:
+    jwt:
+      #跳过认证的路由
+      skip-auth-urls:
+        - /auth/**
+      ############################################
+      #   有效时长
+      #     单位：d:天、h:小时、m:分钟、s:秒
+      ###########################################
+      effective-time: 3m

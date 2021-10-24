@@ -1,12 +1,19 @@
 package com.xiaomo.gateway.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
  * 接口统一响应信息
  * @author wpp
  */
-public class IrmpResponse implements Serializable {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class IrmpResponse<T> implements Serializable {
 
 
     /**
@@ -27,7 +34,7 @@ public class IrmpResponse implements Serializable {
     /**
      * 响应数据
      */
-    private Object data;
+    private T data;
 
     /**
      * 响应参数
@@ -54,7 +61,7 @@ public class IrmpResponse implements Serializable {
         this.headers = headers;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 
@@ -70,7 +77,7 @@ public class IrmpResponse implements Serializable {
         return headers;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 }
