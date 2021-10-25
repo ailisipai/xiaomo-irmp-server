@@ -21,6 +21,12 @@
         <maven.compiler.target>8</maven.compiler.target>
         <spring-cloud.version>2020.0.4</spring-cloud.version>
         <spring-boot.version>2.5.5</spring-boot.version>
+        <libreoffice.version>6.4.3</libreoffice.version>
+        <jodconverter.version>4.2.0</jodconverter.version>
+        <hutool.version>5.7.15</hutool.version>
+        <jwt.version>0.9.1</jwt.version>
+        <lombok.version>1.18.20</lombok.version>
+        <mp.version>3.2.0</mp.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -40,37 +46,103 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.47</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>5.1.9.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+            </dependency>
+            <!--libreoffice文档在线预览-->
+            <dependency>
+                <groupId>org.jodconverter</groupId>
+                <artifactId>jodconverter-core</artifactId>
+                <version>${jodconverter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jodconverter</groupId>
+                <artifactId>jodconverter-local</artifactId>
+                <version>${jodconverter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jodconverter</groupId>
+                <artifactId>jodconverter-spring-boot-starter</artifactId>
+                <version>${jodconverter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.libreoffice</groupId>
+                <artifactId>ridl</artifactId>
+                <version>${libreoffice.version}</version>
+            </dependency>
+            <!--hutool-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!--mybatis-plus-annotation-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mp.version}</version>
+            </dependency>
+
+            <!--mybatis-plus-extension-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mp.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>5.1.9.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-        </dependency>
-    </dependencies>
-
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <spring.active>local</spring.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.active>dev</spring.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.active>prod</spring.active>
+            </properties>
+        </profile>
+    </profiles>
 </project>
