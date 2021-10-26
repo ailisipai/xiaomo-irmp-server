@@ -27,6 +27,7 @@
         <jwt.version>0.9.1</jwt.version>
         <lombok.version>1.18.20</lombok.version>
         <mp.version>3.2.0</mp.version>
+        <justauth.version>1.15.6</justauth.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -119,6 +120,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-extension</artifactId>
                 <version>${mp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>me.zhyd.oauth</groupId>
+                <artifactId>JustAuth</artifactId>
+                <version>${justauth.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
