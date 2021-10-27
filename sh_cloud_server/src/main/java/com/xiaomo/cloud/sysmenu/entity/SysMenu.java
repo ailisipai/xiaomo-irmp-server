@@ -1,10 +1,13 @@
-package com.xiaomo.cloud.sysmenu.model.entity;
+package com.xiaomo.cloud.sysmenu.entity;
 
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.*;
+import com.xiaomo.common.pojo.base.entity.BaseEntity;
+import com.xiaomo.common.pojo.base.node.BaseTreeNode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,13 +20,15 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class SysMenu extends Model {
+@TableName("sys_menu")
+public class SysMenu extends BaseEntity implements BaseTreeNode {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键
      */
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
     /**
@@ -109,6 +114,7 @@ public class SysMenu extends Model {
     /**
      * 备注
      */
+    @TableField(insertStrategy = FieldStrategy.IGNORED)
     private String remark;
 
     /**
@@ -117,24 +123,13 @@ public class SysMenu extends Model {
     private Integer status;
 
     /**
-     * 创建时间
+     * 子节点（表中不存在，用于构造树）
      */
-    private LocalDateTime createTime;
+    @TableField(exist = false)
+    private List children;
 
-    /**
-     * 创建人
-     */
-    private Long createUser;
-
-    /**
-     * 修改时间
-     */
-    private LocalDateTime updateTime;
-
-    /**
-     * 修改人
-     */
-    private Long updateUser;
-
-
+    @Override
+    public void setChildren(List children) {
+        this.children = children;
+    }
 }

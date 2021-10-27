@@ -13,7 +13,7 @@ import org.springframework.data.redis.core.RedisTemplate;
  * key为用户的唯一id，value为LoginUser对象
  *
  * @author yubaoshan
- * @date 2020/7/9 11:02
+ * @date 2021/7/9 11:02
  */
 public class UserCache extends AbstractRedisCacheOperator<SysLoginUser> {
 

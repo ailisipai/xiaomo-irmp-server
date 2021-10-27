@@ -1,6 +1,6 @@
 package com.xiaomo.cloud.sysmenu.service.impl;
 
-import com.xiaomo.cloud.sysmenu.model.entity.SysMenu;
+import com.xiaomo.cloud.sysmenu.entity.SysMenu;
 import com.xiaomo.cloud.sysmenu.mapper.SysMenuMapper;
 import com.xiaomo.cloud.sysmenu.service.ISysMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -8,8 +8,8 @@ import com.xiaomo.common.factory.ExpEnumCodeFactory;
 /**
  * 对象包装异常
  *
- * @author xuyuxiang
- * @date 2020/7/24 14:36
+ * @author xiaomo
+ * @date 2021/7/24 14:36
  */
 @ExpEnumType(module = ExpEnumConstant.SNOWY_CORE_MODULE_EXP_CODE, kind = ExpEnumConstant.WRAPPER_EXCEPTION_ENUM)
 public enum WrapperExceptionEnum implements AbstractBaseExceptionEnum {

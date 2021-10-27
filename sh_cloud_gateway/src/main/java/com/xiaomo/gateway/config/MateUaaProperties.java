@@ -13,7 +13,7 @@ import java.util.List;
  * 验证权限配置
  *
  * @author pangu
- * @date 2020-10-28
+ * @date 2021-10-28
  */
 @Setter
 @Component

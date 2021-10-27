@@ -1,12 +1,11 @@
 package com.xiaomo.cloud.config.mybatisplus;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import java.util.Scanner;
 
 /**
@@ -20,7 +19,7 @@ public class GeneratorCodeConfig {
         System.out.println(help.toString());
         if (scanner.hasNext()) {
             String ipt = scanner.next();
-            if (StringUtils.isNotEmpty(ipt)) {
+            if (StringUtils.isNotBlank(ipt)) {
                 return ipt;
             }
         }
@@ -43,17 +42,18 @@ public class GeneratorCodeConfig {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://192.168.93.189:3306/xiaomo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true");
+        dsc.setUrl("jdbc:mysql://192.168.1.5:3306/sh_xiaomo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("XiaoMo@2020");
+        //dsc.setPassword("XiaoMo@2020");
+        dsc.setPassword("xiaomo");
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
 //        pc.setModuleName(scanner("模块名"));
-        pc.setParent("com.xiaomo.cloud");
-        pc.setEntity("model.entity");
+        pc.setParent("com.xiaomo.cloud.demo");
+        pc.setEntity("entity");
         pc.setMapper("mapper");
         pc.setService("service");
         pc.setServiceImpl("service.impl");

@@ -19,7 +19,7 @@ public interface CacheOperator<T> {
      * @param key   键
      * @param value 值
      * @author xiaomo
-     * @date 2020/7/8 22:06
+     * @date 2021/7/8 22:06
      */
     void put(String key, T value);
 
@@ -30,7 +30,7 @@ public interface CacheOperator<T> {
      * @param value          值
      * @param timeoutSeconds 过期时间，单位秒
      * @author xiaomo
-     * @date 2020/7/8 22:07
+     * @date 2021/7/8 22:07
      */
     void put(String key, T value, Long timeoutSeconds);
 
@@ -40,7 +40,7 @@ public interface CacheOperator<T> {
      * @param key 键
      * @return 值
      * @author xiaomo
-     * @date 2020/7/8 22:08
+     * @date 2021/7/8 22:08
      */
     Object get(String key);
 
@@ -49,7 +49,7 @@ public interface CacheOperator<T> {
      *
      * @param key 键，多个
      * @author xiaomo
-     * @date 2020/7/8 22:09
+     * @date 2021/7/8 22:09
      */
     void remove(String... key);
 
@@ -58,7 +58,7 @@ public interface CacheOperator<T> {
      *
      * @return key列表
      * @author xiaomo
-     * @date 2020/7/8 22:11
+     * @date 2021/7/8 22:11
      */
     Collection<String> getAllKeys();
 
@@ -67,7 +67,7 @@ public interface CacheOperator<T> {
      *
      * @return 值列表
      * @author xiaomo
-     * @date 2020/7/8 22:11
+     * @date 2021/7/8 22:11
      */
     Collection<T> getAllValues();
 
@@ -76,7 +76,7 @@ public interface CacheOperator<T> {
      *
      * @return 键值map
      * @author xiaomo
-     * @date 2020/7/8 22:11
+     * @date 2021/7/8 22:11
      */
     Map<String, T> getAllKeyValues();
 
@@ -87,7 +87,7 @@ public interface CacheOperator<T> {
      *
      * @return 缓存前缀
      * @author xiaomo
-     * @date 2020/7/9 11:06
+     * @date 2021/7/9 11:06
      */
     String getCommonKeyPrefix();
 }

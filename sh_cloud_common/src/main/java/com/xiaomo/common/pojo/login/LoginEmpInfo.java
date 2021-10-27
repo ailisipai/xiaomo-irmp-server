@@ -10,7 +10,7 @@ import java.util.List;
  * 登录用户员工信息
  *
  * @author xiaomo
- * @date 2020/3/11 16:44
+ * @date 2021/10/11 16:44
  */
 @Data
 public class LoginEmpInfo implements Serializable {

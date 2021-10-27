@@ -26,8 +26,10 @@
         <hutool.version>5.7.15</hutool.version>
         <jwt.version>0.9.1</jwt.version>
         <lombok.version>1.18.20</lombok.version>
-        <mp.version>3.2.0</mp.version>
+        <mp.version>3.4.2</mp.version>
         <justauth.version>1.15.6</justauth.version>
+        <easypoi.version>4.2.0</easypoi.version>
+        <generator.version>3.4.1</generator.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -114,17 +116,32 @@
                 <artifactId>mybatis-plus-annotation</artifactId>
                 <version>${mp.version}</version>
             </dependency>
-
-            <!--mybatis-plus-extension-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${generator.version}</version>
+                <!--<version>${mp.version}</version>-->
+            </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-extension</artifactId>
                 <version>${mp.version}</version>
             </dependency>
+            <!--mybatis-plus-extension-->
             <dependency>
                 <groupId>me.zhyd.oauth</groupId>
                 <artifactId>JustAuth</artifactId>
                 <version>${justauth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi-base</artifactId>
+                <version>${easypoi.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

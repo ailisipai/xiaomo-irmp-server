@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sh_cloud_eureka" />
+        <module name="sh_cloud_server" />
         <module name="sh_cloud_gateway" />
         <module name="sh_cloud_common" />
         <module name="sh_cloud_auth" />
@@ -18,6 +19,7 @@
       <module name="sh_cloud_common" target="8" />
       <module name="sh_cloud_eureka" target="8" />
       <module name="sh_cloud_gateway" target="8" />
+      <module name="sh_cloud_server" target="8" />
       <module name="sh_cloud_xiaomo" target="8" />
     </bytecodeTargetLevel>
   </component>

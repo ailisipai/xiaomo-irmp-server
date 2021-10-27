@@ -9,8 +9,8 @@ import com.xiaomo.common.factory.ExpEnumCodeFactory;
 /**
  * 服务器内部相关异常枚举
  *
- * @author xuyuxiang
- * @date 2020/3/18 19:19
+ * @author xiaomo
+ * @date 2021/10/18 19:19
  */
 @ExpEnumType(module = ExpEnumConstant.SNOWY_CORE_MODULE_EXP_CODE, kind = ExpEnumConstant.SERVER_EXCEPTION_ENUM)
 public enum ServerExceptionEnum implements AbstractBaseExceptionEnum {

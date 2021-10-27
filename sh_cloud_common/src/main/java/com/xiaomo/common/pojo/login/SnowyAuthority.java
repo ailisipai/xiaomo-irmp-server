@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
  * 用来包装一下角色名称
  *
  * @author xiaomo
- * @date 2020/4/10 13:08
+ * @date 2021/4/10 13:08
  *
  */
 @Data

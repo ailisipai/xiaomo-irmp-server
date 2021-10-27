@@ -10,7 +10,7 @@ import com.xiaomo.common.factory.ExpEnumCodeFactory;
  * 状态枚举
  *
  * @author yubaoshan
- * @date 2020/4/30 22:45
+ * @date 2021/4/30 22:45
  */
 @ExpEnumType(module = ExpEnumConstant.SNOWY_CORE_MODULE_EXP_CODE, kind = ExpEnumConstant.STATUS_EXCEPTION_ENUM)
 public enum StatusExceptionEnum implements AbstractBaseExceptionEnum {
