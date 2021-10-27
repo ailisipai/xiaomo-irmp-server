@@ -1,0 +1,41 @@
+server:
+  port: 8082
+swagger:
+  base-package: com.xiaomo.wpp.controller
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      fetch-registry: true
+  instance:
+    hostname: localhost
+    appname: xiaomo-authority
+    instance-id: sh_xiaomo_auth
+    prefer-ip-address: true
+## \u6570\u636E\u5E93\u914D\u7F6E\u53C2\u6570
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.93.171:3306/wpp001?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: XiaoMo@2020
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml # \u914D\u7F6E\u6620\u5C04\u6587\u4EF6\u5730\u5740
+  global-config:
+    # \u903B\u8F91\u5220\u9664\u914D\u7F6E
+    db-config:
+      # \u5220\u9664\u524D
+      logic-not-delete-value: 1
+      # \u5220\u9664\u540E
+      logic-delete-value: 0
