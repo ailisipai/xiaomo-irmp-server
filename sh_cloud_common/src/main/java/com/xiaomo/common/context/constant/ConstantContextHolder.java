@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.log.Log;
+import com.xiaomo.common.consts.CommonConstant;
 import com.xiaomo.common.consts.SymbolConstant;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class ConstantContextHolder {
     /**
      * 获取放开xss过滤的接口
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/20 22:13
      */
     public static List<String> getUnXssFilterUrl() {
@@ -47,7 +48,7 @@ public class ConstantContextHolder {
     /**
      * 获取演示环境开关是否开启，默认为false
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/20 22:13
      */
     public static Boolean getDemoEnvFlag() {
@@ -57,7 +58,7 @@ public class ConstantContextHolder {
     /**
      * 邮件的配置
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/19 18:08
      */
     /*public static EmailConfigs getEmailConfigs() {
@@ -80,17 +81,17 @@ public class ConstantContextHolder {
 
     /**
      * 获取jwt密钥
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/19 18:08
      */
-    /*public static String getJwtSecret() {
+    public static String getJwtSecret() {
         return getSysConfigWithDefault("SNOWY_JWT_SECRET", String.class, CommonConstant.DEFAULT_JWT_PASSWORD);
-    }*/
+    }
 
     /**
      * 获取默认密码
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/19 18:08
      */
     /*public static String getDefaultPassWord() {
@@ -100,7 +101,7 @@ public class ConstantContextHolder {
     /**
      * 获取会话过期时间，默认2小时
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/7/9 16:18
      */
     public static Long getSessionTokenExpireSec() {
@@ -196,7 +197,7 @@ public class ConstantContextHolder {
      * @param configCode   变量名称，对应sys_config表中的code
      * @param clazz        返回变量值的类型
      * @param defaultValue 如果结果为空返回此默认值
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/20 22:03
      */
     public static <T> T getSysConfigWithDefault(String configCode, Class<T> clazz, T defaultValue) {
@@ -221,7 +222,7 @@ public class ConstantContextHolder {
      * @param configCode   变量名称，对应sys_config表中的code
      * @param clazz        返回变量值的类型
      * @param nullThrowExp 若为空是否抛出异常
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/20 22:03
      */
     /*public static <T> T getSysConfig(String configCode, Class<T> clazz, Boolean nullThrowExp) {

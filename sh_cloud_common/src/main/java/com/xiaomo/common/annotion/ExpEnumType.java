@@ -11,7 +11,7 @@ import java.lang.annotation.*;
  * <p>
  * 模块编码和分类编码在ExpEnumCodeConstant类中声明
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2021/6/19 20:46
  */
 @Inherited

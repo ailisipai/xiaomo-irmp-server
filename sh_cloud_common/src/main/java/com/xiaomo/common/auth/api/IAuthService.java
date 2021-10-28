@@ -106,7 +106,7 @@ public interface IAuthService {
     /**
      * 新增用户的数据授权范围
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/7/20 14:50
      */
     //void refreshUserDataScope(Long orgId);

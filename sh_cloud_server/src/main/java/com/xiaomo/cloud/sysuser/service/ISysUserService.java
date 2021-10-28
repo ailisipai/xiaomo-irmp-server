@@ -13,4 +13,10 @@ import com.xiaomo.common.auth.entity.SysUser;
  */
 public interface ISysUserService extends IService<SysUser> {
 
+    /**
+     * 根据用户名查询用户信息
+     * @param userName
+     * @return
+     */
+    SysUser getUserByUserName(String userName);
 }

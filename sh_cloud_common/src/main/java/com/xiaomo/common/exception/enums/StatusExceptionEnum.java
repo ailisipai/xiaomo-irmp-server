@@ -9,7 +9,7 @@ import com.xiaomo.common.factory.ExpEnumCodeFactory;
 /**
  * 状态枚举
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2021/4/30 22:45
  */
 @ExpEnumType(module = ExpEnumConstant.SNOWY_CORE_MODULE_EXP_CODE, kind = ExpEnumConstant.STATUS_EXCEPTION_ENUM)

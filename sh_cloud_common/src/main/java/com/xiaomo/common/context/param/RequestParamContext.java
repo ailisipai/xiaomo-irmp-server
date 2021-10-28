@@ -17,7 +17,7 @@ public class RequestParamContext {
     /**
      * 保存请求参数
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void set(Dict requestParam) {
@@ -27,7 +27,7 @@ public class RequestParamContext {
     /**
      * 保存请求参数
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void setObject(Object requestParam) {
@@ -46,7 +46,7 @@ public class RequestParamContext {
     /**
      * 获取请求参数
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static Dict get() {
@@ -56,7 +56,7 @@ public class RequestParamContext {
     /**
      * 清除请求参数
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void clear() {

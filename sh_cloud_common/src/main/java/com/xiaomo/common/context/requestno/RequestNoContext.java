@@ -3,7 +3,7 @@ package com.xiaomo.common.context.requestno;
 /**
  * 临时保存当前请求号
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2021/6/21 20:17
  */
 public class RequestNoContext {
@@ -13,7 +13,7 @@ public class RequestNoContext {
     /**
      * 保存请求号
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void set(String requestNo) {
@@ -23,7 +23,7 @@ public class RequestNoContext {
     /**
      * 获取请求号
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static String get() {
@@ -33,7 +33,7 @@ public class RequestNoContext {
     /**
      * 清除请求号
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void clear() {

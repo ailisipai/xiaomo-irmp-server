@@ -5,7 +5,7 @@ package com.xiaomo.common.context.group;
  * <p>
  * 注意：如果要用@TableUniqueValue这个校验，必须得主键的字段名是id，否则会校验失败
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2021/6/21 20:17
  */
 public class RequestParamIdContext {
@@ -15,7 +15,7 @@ public class RequestParamIdContext {
     /**
      * 设置id
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void set(Long id) {
@@ -25,7 +25,7 @@ public class RequestParamIdContext {
     /**
      * 获取id
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static Long get() {
@@ -35,7 +35,7 @@ public class RequestParamIdContext {
     /**
      * 清除缓存id
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void clear() {

@@ -5,7 +5,7 @@ package com.xiaomo.common.consts;
  * <p>
  * 顺序越小越靠前
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2021/4/10 15:33
  */
 public interface AopSortConstant {

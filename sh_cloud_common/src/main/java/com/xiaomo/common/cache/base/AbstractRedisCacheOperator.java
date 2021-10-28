@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * 基于redis的缓存封装
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2021/7/9 10:09
  */
 public abstract class AbstractRedisCacheOperator<T> implements CacheOperator<T> {

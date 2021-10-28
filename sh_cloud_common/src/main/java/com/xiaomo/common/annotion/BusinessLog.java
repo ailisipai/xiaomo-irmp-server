@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 /**
  * 标记需要做业务日志的方法
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2017/3/31 12:46
  */
 @Inherited

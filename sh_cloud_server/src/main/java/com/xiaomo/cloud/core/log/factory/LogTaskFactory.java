@@ -1,26 +1,34 @@
 package com.xiaomo.cloud.core.log.factory;
 
 
+import cn.hutool.extra.spring.SpringUtil;
+import cn.hutool.log.Log;
+import com.xiaomo.cloud.sysvislog.entity.SysVisLog;
+import com.xiaomo.cloud.sysvislog.service.ISysVisLogService;
+import com.xiaomo.common.context.requestno.RequestNoContext;
+
+import java.util.TimerTask;
+
 /**
  * 日志操作任务创建工厂
  *
  * @author xiaomo
  * @date 2021/10/12 14:18
  */
-public class LogTaskFactory {/*
+public class LogTaskFactory {
 
     private static final Log log = Log.get();
 
-    private static final SysVisLogService sysVisLogService = SpringUtil.getBean(SysVisLogService.class);
+    private static final ISysVisLogService sysVisLogService = SpringUtil.getBean(ISysVisLogService.class);
 
-    private static final SysOpLogService sysOpLogService = SpringUtil.getBean(SysOpLogService.class);
+    //private static final SysOpLogService sysOpLogService = SpringUtil.getBean(SysOpLogService.class);
 
-    *//**
+    /**
      * 登录日志
      *
      * @author xiaomo
      * @date 2021/10/12 15:21
-     *//*
+     */
     public static TimerTask loginLog(SysVisLog sysVisLog, final String account, String success, String failMessage) {
         return new TimerTask() {
             @Override
@@ -35,7 +43,7 @@ public class LogTaskFactory {/*
         };
     }
 
-    *//**
+    /**
      * 登出日志
      *
      * @author xiaomo

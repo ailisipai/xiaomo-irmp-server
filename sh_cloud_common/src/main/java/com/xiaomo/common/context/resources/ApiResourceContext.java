@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * 存放本系统所有@RequestMapping的Url
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2021/6/21 17:32
  */
 public class ApiResourceContext {
@@ -21,7 +21,7 @@ public class ApiResourceContext {
     /**
      * 添加一批url
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2020/6/21 17:35
      */
     public static void addBatchUrls(Set<String> urls) {
@@ -34,7 +34,7 @@ public class ApiResourceContext {
     /**
      * 添加url
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2020/6/21 17:35
      */
     public static void addUrl(String url) {
@@ -47,7 +47,7 @@ public class ApiResourceContext {
     /**
      * 删除url
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2020/6/21 17:35
      */
     public static void deleteUrl(String url) {
@@ -60,7 +60,7 @@ public class ApiResourceContext {
     /**
      * 获取系统的所有url
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2020/6/21 17:36
      */
     public static Set<String> getApiUrls() {

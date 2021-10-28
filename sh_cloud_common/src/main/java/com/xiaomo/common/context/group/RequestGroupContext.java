@@ -3,7 +3,7 @@ package com.xiaomo.common.context.group;
 /**
  * 保存控制器的方法上的校验group class
  *
- * @author yubaoshan
+ * @author xiaomo
  * @date 2021/6/21 20:17
  */
 public class RequestGroupContext {
@@ -13,7 +13,7 @@ public class RequestGroupContext {
     /**
      * 设置临时的group class
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void set(Class<?> groupValue) {
@@ -23,7 +23,7 @@ public class RequestGroupContext {
     /**
      * 获取临时缓存的group class
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static Class<?> get() {
@@ -33,7 +33,7 @@ public class RequestGroupContext {
     /**
      * 清除临时缓存的group class
      *
-     * @author yubaoshan
+     * @author xiaomo
      * @date 2021/6/21 20:17
      */
     public static void clear() {

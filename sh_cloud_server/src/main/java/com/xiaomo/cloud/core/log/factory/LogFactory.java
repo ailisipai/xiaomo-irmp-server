@@ -1,5 +1,11 @@
 package com.xiaomo.cloud.core.log.factory;
 
+import cn.hutool.core.date.DateTime;
+import com.xiaomo.cloud.core.enums.LogSuccessStatusEnum;
+import com.xiaomo.cloud.core.enums.VisLogTypeEnum;
+import com.xiaomo.cloud.sysvislog.entity.SysVisLog;
+import com.xiaomo.common.consts.SymbolConstant;
+
 /**
  * 日志对象创建工厂
  *
@@ -14,7 +20,7 @@ public class LogFactory {
      * @author xiaomo
      * @date 2021/10/12 16:09
      */
-    /*static void createSysLoginLog(SysVisLog sysVisLog, String account, String successCode, String failMessage) {
+    static void createSysLoginLog(SysVisLog sysVisLog, String account, String successCode, String failMessage) {
         sysVisLog.setName(VisLogTypeEnum.LOGIN.getMessage());
         sysVisLog.setSuccess(successCode);
 
@@ -31,7 +37,7 @@ public class LogFactory {
         }
     }
 
-    *//**
+    /**
      * 创建登出日志
      *
      * @author xiaomo
@@ -98,7 +104,7 @@ public class LogFactory {
      *
      * @author xiaomo
      * @date 2021/10/19 14:36
-     *//*
+     */
     public static SysVisLog genBaseSysVisLog(String ip, String location, String browser, String os) {
         SysVisLog sysVisLog = new SysVisLog();
         sysVisLog.setIp(ip);
@@ -108,7 +114,7 @@ public class LogFactory {
         return sysVisLog;
     }
 
-    *//**
+    /**
      * 构建基础操作日志
      *
      * @author xiaomo

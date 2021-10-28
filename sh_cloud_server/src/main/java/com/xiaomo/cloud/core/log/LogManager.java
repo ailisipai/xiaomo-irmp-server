@@ -1,17 +1,34 @@
 package com.xiaomo.cloud.core.log;
 
 
+import cn.hutool.core.util.ObjectUtil;
+import com.xiaomo.cloud.core.log.factory.LogFactory;
+import com.xiaomo.cloud.core.log.factory.LogTaskFactory;
+import com.xiaomo.cloud.sysvislog.entity.SysVisLog;
+import com.xiaomo.common.context.constant.ConstantContextHolder;
+import com.xiaomo.common.exception.ServiceException;
+import com.xiaomo.common.exception.enums.ServerExceptionEnum;
+import com.xiaomo.common.util.HttpServletUtil;
+import com.xiaomo.common.util.IpAddressUtil;
+import com.xiaomo.common.util.UaUtil;
+import org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.TimerTask;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
  * 日志管理器
  *
  * @author xiaomo
  * @date 2021/10/12 14:13
  */
-public class LogManager {/*
+public class LogManager {
 
-    *//**
+    /**
      * 异步操作记录日志的线程池
-     *//*
+     */
     private static final ScheduledThreadPoolExecutor EXECUTOR = new ScheduledThreadPoolExecutor(10, new ScheduledExecutorFactoryBean());
 
     private LogManager() {
@@ -23,12 +40,12 @@ public class LogManager {/*
         return LOG_MANAGER;
     }
 
-    *//**
+    /**
      * 异步执行日志的方法
      *
      * @author xiaomo
      * @date 2021/4/8 19:19
-     *//*
+     */
     private void executeLog(TimerTask task) {
 
         //如果演示模式开启，则不记录日志
@@ -41,12 +58,12 @@ public class LogManager {/*
         EXECUTOR.schedule(task, operateDelayTime, TimeUnit.MILLISECONDS);
     }
 
-    *//**
+    /**
      * 登录日志
      *
      * @author xiaomo
      * @date 2021/10/18 20:00
-     *//*
+     */
     public void executeLoginLog(final String account, final String success, final String failMessage) {
         SysVisLog sysVisLog = this.genBaseSysVisLog();
         TimerTask timerTask = LogTaskFactory.loginLog(sysVisLog, account,
@@ -55,7 +72,7 @@ public class LogManager {/*
         executeLog(timerTask);
     }
 
-    *//**
+    /**
      * 登出日志
      *
      * @author xiaomo
@@ -96,7 +113,7 @@ public class LogManager {/*
      *
      * @author xiaomo
      * @date 2021/10/19 14:44
-     *//*
+     */
     private SysVisLog genBaseSysVisLog() {
         HttpServletRequest request = HttpServletUtil.getRequest();
         if (ObjectUtil.isNotNull(request)) {
@@ -110,7 +127,7 @@ public class LogManager {/*
         }
     }
 
-    *//**
+    /**
      * 构建基础操作日志
      *
      * @author xiaomo
