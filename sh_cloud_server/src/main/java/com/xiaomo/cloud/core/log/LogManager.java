@@ -77,14 +77,14 @@ public class LogManager {
      *
      * @author xiaomo
      * @date 2021/10/18 20:01
-     *//*
+     */
     public void executeExitLog(final String account) {
         SysVisLog sysVisLog = this.genBaseSysVisLog();
         TimerTask timerTask = LogTaskFactory.exitLog(sysVisLog, account);
         executeLog(timerTask);
     }
 
-    *//**
+    /**
      * 操作日志
      *
      * @author xiaomo

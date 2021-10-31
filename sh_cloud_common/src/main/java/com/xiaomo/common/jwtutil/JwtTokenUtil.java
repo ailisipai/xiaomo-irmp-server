@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * JwtToken工具类
  *
- * @author xuyuxiang
+ * @author xiaomo
  * @date 2020/3/12 17:39
  */
 public class JwtTokenUtil {
@@ -20,7 +20,7 @@ public class JwtTokenUtil {
     /**
      * 生成token
      *
-     * @author xuyuxiang
+     * @author xiaomo
      * @date 2020/3/12 17:52
      */
     public static String generateToken(JwtPayLoad jwtPayLoad) {
@@ -39,7 +39,7 @@ public class JwtTokenUtil {
     /**
      * 根据token获取Claims
      *
-     * @author xuyuxiang
+     * @author xiaomo
      * @date 2020/3/13 10:29
      */
     private static Claims getClaimsFromToken(String token) {
@@ -52,7 +52,7 @@ public class JwtTokenUtil {
     /**
      * 获取JwtPayLoad部分
      *
-     * @author xuyuxiang
+     * @author xiaomo
      * @date 2020/3/12 17:53
      */
     public static JwtPayLoad getJwtPayLoad(String token) {
@@ -63,7 +63,7 @@ public class JwtTokenUtil {
     /**
      * 校验token是否正确
      *
-     * @author xuyuxiang
+     * @author xiaomo
      * @date 2020/3/13 10:36
      */
     public static Boolean checkToken(String token) {
@@ -78,7 +78,7 @@ public class JwtTokenUtil {
     /**
      * 校验token是否失效
      *
-     * @author xuyuxiang
+     * @author xiaomo
      * @date 2020/3/13 10:30
      */
     public static Boolean isTokenExpired(String token) {

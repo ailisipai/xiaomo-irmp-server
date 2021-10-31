@@ -42,7 +42,7 @@ public class LogFactory {
      *
      * @author xiaomo
      * @date 2021/10/12 16:09
-     *//*
+     */
     static void createSysExitLog(SysVisLog sysVisLog, String account) {
         sysVisLog.setName(VisLogTypeEnum.EXIT.getMessage());
         sysVisLog.setSuccess(LogSuccessStatusEnum.SUCCESS.getCode());
@@ -52,7 +52,7 @@ public class LogFactory {
         sysVisLog.setAccount(account);
     }
 
-    *//**
+    /**
      * 创建操作日志
      *
      * @author xiaomo

@@ -48,7 +48,7 @@ public class LogTaskFactory {
      *
      * @author xiaomo
      * @date 2021/10/12 15:21
-     *//*
+     */
     public static TimerTask exitLog(SysVisLog sysVisLog, String account) {
         return new TimerTask() {
             @Override
@@ -63,7 +63,7 @@ public class LogTaskFactory {
         };
     }
 
-    *//**
+    /**
      * 操作日志
      *
      * @author xiaomo

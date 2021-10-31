@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * JwtPayLoad部分
  *
- * @author xuyuxiang
+ * @author xiaomo
  * @date 2020/3/12 17:41
  */
 @Data

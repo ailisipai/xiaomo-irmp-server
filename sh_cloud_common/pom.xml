@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <version>0.0.1-SNAPSHOT</version>
     <artifactId>sh_cloud_common</artifactId>
     <packaging>jar</packaging>
 

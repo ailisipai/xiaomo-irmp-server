@@ -1,5 +1,8 @@
 package com.xiaomo.common.auth.api;
 
+import com.xiaomo.common.auth.entity.SysUser;
+import com.xiaomo.common.pojo.login.SysLoginUser;
+
 /**
  * 认证相关service
  *
@@ -27,7 +30,7 @@ public interface IAuthService {
      * @author xiaomo
      * @date 2021/7/29 10:12
      **/
-    //String doLogin(SysUser sysUser);
+    String doLogin(SysUser sysUser);
 
     /**
      * 从request获取token
@@ -64,7 +67,7 @@ public interface IAuthService {
      * @author xiaomo
      * @date 2021/10/19 19:59
      */
-    //void setSpringSecurityContextAuthentication(SysLoginUser sysLoginUser);
+    void setSpringSecurityContextAuthentication(SysLoginUser sysLoginUser);
 
     /**
      * 获取SpringSecurityContext中认证信息
@@ -101,7 +104,7 @@ public interface IAuthService {
      * @author xiaomo
      * @date 2021/9/20 15:21
      **/
-    //SysLoginUser genSysLoginUser(SysUser sysUser);
+    SysLoginUser genSysLoginUser(SysUser sysUser);
 
     /**
      * 新增用户的数据授权范围
