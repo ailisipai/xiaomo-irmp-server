@@ -2,6 +2,7 @@ package com.xiaomo.cloud.sysvislog.mapper;
 
 import com.xiaomo.cloud.sysvislog.entity.SysVisLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author xiaomo
  * @since 2021-10-28
  */
+@Mapper
 public interface SysVisLogMapper extends BaseMapper<SysVisLog> {
 
 }

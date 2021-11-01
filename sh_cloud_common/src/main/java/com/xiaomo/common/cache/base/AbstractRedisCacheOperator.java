@@ -32,7 +32,7 @@ public abstract class AbstractRedisCacheOperator<T> implements CacheOperator<T> 
 
     @Override
     public void put(String key, T value, Long timeoutSeconds) {
-        redisTemplate.boundValueOps(getCommonKeyPrefix() + key).set(value, timeoutSeconds, TimeUnit.SECONDS);
+        //redisTemplate.boundValueOps(getCommonKeyPrefix() + key).set(value, timeoutSeconds, TimeUnit.SECONDS);
     }
 
     @Override

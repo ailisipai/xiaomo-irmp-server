@@ -1,5 +1,7 @@
 package com.xiaomo.common.cache;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Collection;
 import java.util.Map;
 
@@ -11,6 +13,7 @@ import java.util.Map;
  * @author xiaomo
  * @date 2021/10/26 22:02
  */
+@Component
 public interface CacheOperator<T> {
 
     /**

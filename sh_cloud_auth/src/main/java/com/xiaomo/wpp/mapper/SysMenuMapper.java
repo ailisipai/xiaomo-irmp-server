@@ -1,6 +1,6 @@
-package com.xiaomo.cloud.sysmenu.mapper;
+package com.xiaomo.wpp.mapper;
 
-import com.xiaomo.cloud.sysmenu.entity.SysMenu;
+import com.xiaomo.wpp.model.entity.SysMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 

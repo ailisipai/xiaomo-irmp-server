@@ -9,9 +9,12 @@ import com.xiaomo.common.exception.AuthException;
 import com.xiaomo.common.exception.enums.AuthExceptionEnum;
 import com.xiaomo.common.pojo.response.ResponseData;
 import com.xiaomo.common.pojo.response.SuccessResponseData;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -21,6 +24,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping(value = "/auth")
+@Api(value = "用户模块" ,tags={"用户模块"})
 public class SysLoginController {
 
     @Resource
@@ -30,19 +34,20 @@ public class SysLoginController {
     @Resource
     private CaptchaService captchaService;
 
-    @RequestMapping(value = "/login")
+    @ApiOperation("登录接口")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public ResponseData login(@RequestBody Dict dict){
         String account = dict.getStr("username");
         String password = dict.getStr("password");
         String tenantCode = dict.getStr("tenantCode");
         //检测是否开启验证码
-        if (ConstantContextHolder.getCaptchaOpenFlag()) {
+       /* if (ConstantContextHolder.getCaptchaOpenFlag()) {
             verificationCode(dict.getStr("code"));
-        }
+        }*/
         //如果系统开启了多租户开关，则添加租户的临时缓存
-        if (ConstantContextHolder.getTenantOpenFlag()) {
+        /*if (ConstantContextHolder.getTenantOpenFlag()) {
             authService.cacheTenantInfo(tenantCode);
-        }
+        }*/
         String token = authService.login(account, password);
         return new SuccessResponseData(token);
     }

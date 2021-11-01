@@ -4,6 +4,8 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.extra.spring.SpringUtil;
 import com.xiaomo.cloud.auth.factory.LoginUserFactory;
 import com.xiaomo.cloud.core.enums.LogSuccessStatusEnum;
 import com.xiaomo.cloud.core.log.LogManager;
@@ -11,6 +13,7 @@ import com.xiaomo.cloud.sysuser.service.ISysUserService;
 import com.xiaomo.common.auth.api.IAuthService;
 import com.xiaomo.common.auth.entity.SysUser;
 import com.xiaomo.common.cache.UserCache;
+import com.xiaomo.common.cache.dbs.CurrentDataSourceContext;
 import com.xiaomo.common.context.constant.ConstantContextHolder;
 import com.xiaomo.common.enums.CommonStatusEnum;
 import com.xiaomo.common.exception.AuthException;
@@ -18,9 +21,16 @@ import com.xiaomo.common.exception.enums.AuthExceptionEnum;
 import com.xiaomo.common.jwtutil.JwtPayLoad;
 import com.xiaomo.common.jwtutil.JwtTokenUtil;
 import com.xiaomo.common.pojo.login.SysLoginUser;
+import com.xiaomo.common.tenant.context.TenantCodeHolder;
+import com.xiaomo.common.tenant.context.TenantDbNameHolder;
+import com.xiaomo.common.tenant.entity.TenantInfo;
+import com.xiaomo.common.tenant.exception.TenantException;
+import com.xiaomo.common.tenant.exception.enums.TenantExceptionEnum;
+import com.xiaomo.common.tenant.service.TenantInfoService;
 import com.xiaomo.common.util.HttpServletUtil;
 import com.xiaomo.common.util.IpAddressUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -44,8 +54,7 @@ public class AuthServiceImpl implements IAuthService, UserDetailsService {
     @Autowired
     private ISysUserService sysUserService;
 
-    @Resource
-    private UserCache userCache;
+    private UserCache userCache = new UserCache(new RedisTemplate<String, SysLoginUser>());
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
@@ -54,7 +63,34 @@ public class AuthServiceImpl implements IAuthService, UserDetailsService {
 
     @Override
     public void cacheTenantInfo(String tenantCode) {
+        if (StrUtil.isBlank(tenantCode)) {
+            return;
+        }
 
+        // 从spring容器中获取service，如果没开多租户功能，没引入相关包，这里会报错
+        TenantInfoService tenantInfoService = null;
+        try {
+            tenantInfoService = SpringUtil.getBean(TenantInfoService.class);
+        } catch (Exception e) {
+            throw new TenantException(TenantExceptionEnum.TENANT_MODULE_NOT_ENABLE_ERROR);
+        }
+
+        // 获取租户信息
+        TenantInfo tenantInfo = tenantInfoService.getByCode(tenantCode);
+        if (tenantInfo != null) {
+            String dbName = tenantInfo.getDbName();
+
+            // 租户编码的临时存放
+            TenantCodeHolder.put(tenantCode);
+
+            // 租户的数据库名称临时缓存
+            TenantDbNameHolder.put(dbName);
+
+            // 数据源信息临时缓存
+            CurrentDataSourceContext.setDataSourceType(dbName);
+        } else {
+            throw new TenantException(TenantExceptionEnum.CNAT_FIND_TENANT_ERROR);
+        }
     }
     /**
      * 用户登录
@@ -138,7 +174,6 @@ public class AuthServiceImpl implements IAuthService, UserDetailsService {
                 }
             }
         }
-
         //返回token
         return token;
     }

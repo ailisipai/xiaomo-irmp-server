@@ -1,7 +1,7 @@
 server:
   port: 8082
 swagger:
-  base-package: com.xiaomo.wpp.controller
+  base-package: com.xiaomo.cloud
 eureka:
   client:
     service-url:
@@ -9,15 +9,15 @@ eureka:
       fetch-registry: true
   instance:
     hostname: localhost
-    appname: xiaomo-authority
-    instance-id: sh_xiaomo_auth
+    appname: sh_cloud_server
+    instance-id: sh_cloud_server
     prefer-ip-address: true
 ## \u6570\u636E\u5E93\u914D\u7F6E\u53C2\u6570
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.93.171:3306/wpp001?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.93.190:3306/xiaomo?useUnicode=true&characterEncoding=utf-8
     username: root
     password: XiaoMo@2020
   jackson:
@@ -25,7 +25,10 @@ spring:
     time-zone: GMT+8
     serialization:
       write-dates-as-timestamps: false
-
+  redis:
+    host: 192.168.93.190
+    port: 6379
+    password:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

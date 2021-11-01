@@ -2,6 +2,7 @@ package com.xiaomo.cloud.sysapp.mapper;
 
 import com.xiaomo.cloud.sysapp.entity.SysApp;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author xiaomo
  * @since 2021-10-31
  */
+@Mapper
 public interface SysAppMapper extends BaseMapper<SysApp> {
 
 }
