@@ -9,8 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="sh_cloud_eureka" />
         <module name="sh_cloud_server" />
-        <module name="sh_cloud_gateway" />
         <module name="sh_cloud_common" />
+        <module name="sh_cloud_gateway" />
         <module name="sh_cloud_auth" />
       </profile>
     </annotationProcessing>

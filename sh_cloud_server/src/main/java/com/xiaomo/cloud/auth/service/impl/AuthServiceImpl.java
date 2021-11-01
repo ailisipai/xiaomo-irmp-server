@@ -54,7 +54,8 @@ public class AuthServiceImpl implements IAuthService, UserDetailsService {
     @Autowired
     private ISysUserService sysUserService;
 
-    private UserCache userCache = new UserCache(new RedisTemplate<String, SysLoginUser>());
+    @Autowired
+    private UserCache userCache ;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

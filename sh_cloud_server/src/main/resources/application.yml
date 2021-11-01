@@ -17,9 +17,9 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.93.190:3306/xiaomo?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.1.4:3306/sh_xiaomo?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: XiaoMo@2020
+    password: xiaomo
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8

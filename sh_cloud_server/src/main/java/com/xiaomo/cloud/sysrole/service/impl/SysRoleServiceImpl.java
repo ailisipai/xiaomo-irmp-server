@@ -36,7 +36,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     private ISysUserRoleService sysUserRoleService;
     @Autowired
     private ISysOrgService sysOrgService;
-    //@Resource
+    @Autowired
     private ISysRoleDataScopeService sysRoleDataScopeService;
 
     @Override
