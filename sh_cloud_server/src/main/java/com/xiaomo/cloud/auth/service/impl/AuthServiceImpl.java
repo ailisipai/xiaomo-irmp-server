@@ -32,6 +32,7 @@ import com.xiaomo.common.util.IpAddressUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -187,6 +188,8 @@ public class AuthServiceImpl implements IAuthService, UserDetailsService {
                         null,
                         sysLoginUser.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication);
     }
     /**
      * 构造登录用户信息
@@ -200,6 +203,10 @@ public class AuthServiceImpl implements IAuthService, UserDetailsService {
         BeanUtil.copyProperties(sysUser, sysLoginUser);
         LoginUserFactory.fillLoginUserInfo(sysLoginUser);
         return sysLoginUser;
+    }
+    @Override
+    public Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
     }
     /*==========================================工具方法=============================================*/
 
