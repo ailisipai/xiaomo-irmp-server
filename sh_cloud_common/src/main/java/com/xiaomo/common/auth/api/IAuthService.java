@@ -2,6 +2,7 @@ package com.xiaomo.common.auth.api;
 
 import com.xiaomo.common.auth.entity.SysUser;
 import com.xiaomo.common.pojo.login.SysLoginUser;
+import org.springframework.security.core.Authentication;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -78,7 +79,7 @@ public interface IAuthService {
      * @author xiaomo
      * @date 2021/10/19 20:02
      */
-    //Authentication getAuthentication();
+    Authentication getAuthentication();
 
     /**
      * 校验token是否正确

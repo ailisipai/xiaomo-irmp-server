@@ -257,7 +257,7 @@ public class ConstantContextHolder {
      * @Date 2021/1/21 15:22
      */
     public static Boolean getCaptchaOpenFlag() {
-        return getSysConfigWithDefault("SNOWY_CAPTCHA_OPEN", Boolean.class, true);
+        return getSysConfigWithDefault("SNOWY_CAPTCHA_OPEN", Boolean.class, false);
     }
 
 }

@@ -4,7 +4,6 @@ package com.xiaomo.common.cache;
 import com.xiaomo.common.cache.base.AbstractRedisCacheOperator;
 import com.xiaomo.common.pojo.login.SysLoginUser;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 /**
  * 登录用户的缓存，存储了当前登录的用户
