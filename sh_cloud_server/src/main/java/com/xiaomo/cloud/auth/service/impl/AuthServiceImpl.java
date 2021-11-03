@@ -14,6 +14,7 @@ import com.xiaomo.common.auth.api.IAuthService;
 import com.xiaomo.common.auth.entity.SysUser;
 import com.xiaomo.common.cache.UserCache;
 import com.xiaomo.common.cache.dbs.CurrentDataSourceContext;
+import com.xiaomo.common.consts.CommonConstant;
 import com.xiaomo.common.context.constant.ConstantContextHolder;
 import com.xiaomo.common.enums.CommonStatusEnum;
 import com.xiaomo.common.exception.AuthException;
@@ -40,6 +41,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -200,6 +202,65 @@ public class AuthServiceImpl implements IAuthService, UserDetailsService {
         BeanUtil.copyProperties(sysUser, sysLoginUser);
         LoginUserFactory.fillLoginUserInfo(sysLoginUser);
         return sysLoginUser;
+    }
+
+    @Override
+    public String getTokenFromRequest(HttpServletRequest request) {
+        String authToken = request.getHeader(CommonConstant.AUTHORIZATION);
+        if (ObjectUtil.isEmpty(authToken) || CommonConstant.UNDEFINED.equals(authToken)) {
+            return null;
+        } else {
+            //token不是以Bearer打头，则响应回格式不正确
+            if (!authToken.startsWith(CommonConstant.TOKEN_TYPE_BEARER)) {
+                throw new AuthException(AuthExceptionEnum.NOT_VALID_TOKEN_TYPE);
+            }
+            try {
+                authToken = authToken.substring(CommonConstant.TOKEN_TYPE_BEARER.length() + 1);
+            } catch (StringIndexOutOfBoundsException e) {
+                throw new AuthException(AuthExceptionEnum.NOT_VALID_TOKEN_TYPE);
+            }
+        }
+
+        return authToken;
+    }
+    @Override
+    public SysLoginUser getLoginUserByToken(String token) {
+
+        //校验token，错误则抛异常
+        this.checkToken(token);
+
+        //根据token获取JwtPayLoad部分
+        JwtPayLoad jwtPayLoad = JwtTokenUtil.getJwtPayLoad(token);
+
+        //从redis缓存中获取登录用户
+        Object cacheObject = userCache.get(jwtPayLoad.getUuid());
+
+        //用户不存在则表示登录已过期
+        if (ObjectUtil.isEmpty(cacheObject)) {
+            throw new AuthException(AuthExceptionEnum.LOGIN_EXPIRED);
+        }
+
+        //转换成登录用户
+        SysLoginUser sysLoginUser = (SysLoginUser) cacheObject;
+
+        //用户存在, 无痛刷新缓存，在登录过期前活动的用户自动刷新缓存时间
+        this.cacheLoginUser(jwtPayLoad, sysLoginUser);
+
+        //返回用户
+        return sysLoginUser;
+    }
+    @Override
+    public void checkToken(String token) {
+        //校验token是否正确
+        Boolean tokenCorrect = JwtTokenUtil.checkToken(token);
+        if (!tokenCorrect) {
+            throw new AuthException(AuthExceptionEnum.REQUEST_TOKEN_ERROR);
+        }
+        //校验token是否失效
+        Boolean tokenExpired = JwtTokenUtil.isTokenExpired(token);
+        if (tokenExpired) {
+            throw new AuthException(AuthExceptionEnum.LOGIN_EXPIRED);
+        }
     }
     /*==========================================工具方法=============================================*/
 

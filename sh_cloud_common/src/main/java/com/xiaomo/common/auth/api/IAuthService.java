@@ -3,6 +3,8 @@ package com.xiaomo.common.auth.api;
 import com.xiaomo.common.auth.entity.SysUser;
 import com.xiaomo.common.pojo.login.SysLoginUser;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 认证相关service
  *
@@ -40,7 +42,7 @@ public interface IAuthService {
      * @author xiaomo
      * @date 2021/10/13 11:41
      */
-    //String getTokenFromRequest(HttpServletRequest request);
+    String getTokenFromRequest(HttpServletRequest request);
 
     /**
      * 根据token获取登录用户信息
@@ -50,7 +52,7 @@ public interface IAuthService {
      * @author xiaomo
      * @date 2021/10/13 11:59
      */
-    //SysLoginUser getLoginUserByToken(String token);
+    SysLoginUser getLoginUserByToken(String token);
 
     /**
      * 退出登录
@@ -85,7 +87,7 @@ public interface IAuthService {
      * @author xiaomo
      * @date 2021/5/28 9:57
      */
-    //void checkToken(String token);
+    void checkToken(String token);
 
     /**
      * 临时缓存租户信息

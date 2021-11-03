@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
  * 失败响应结果
  *
  * @author xiaomo
- * @date 2021/10/30 15:05
+ * @date 2021/11/30 15:05
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
