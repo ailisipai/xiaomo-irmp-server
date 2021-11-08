@@ -71,6 +71,7 @@ public class JwtTokenUtil {
             getClaimsFromToken(token);
             return true;
         } catch (JwtException jwtException) {
+            jwtException.printStackTrace();
             return false;
         }
     }

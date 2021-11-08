@@ -64,7 +64,6 @@ public class AuthServiceImpl implements IAuthService, UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return null;
     }
-
     @Override
     public void cacheTenantInfo(String tenantCode) {
         if (StrUtil.isBlank(tenantCode)) {
