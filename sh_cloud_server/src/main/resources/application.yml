@@ -9,8 +9,8 @@ eureka:
       fetch-registry: true
   instance:
     hostname: localhost
-    appname: sh_cloud_server
-    instance-id: sh_cloud_server
+    appname: sh-cloud-server
+    instance-id: sh-cloud-server
     prefer-ip-address: true
 ## \u6570\u636E\u5E93\u914D\u7F6E\u53C2\u6570
 spring:
@@ -26,9 +26,8 @@ spring:
     serialization:
       write-dates-as-timestamps: false
   redis:
-    host: 192.168.93.190
+    host: 192.168.1.4
     port: 6379
-    password:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
@@ -42,3 +41,10 @@ mybatis-plus:
       logic-not-delete-value: 1
       # \u5220\u9664\u540E
       logic-delete-value: 0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: "ALWAYS"

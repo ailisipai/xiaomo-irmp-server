@@ -1,5 +1,6 @@
 package com.xiaomo.gateway.filter;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class CorsFilter implements WebFilter {
             headers.set(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
             headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, "*");
             headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "");
-            headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "false");
+            headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
             headers.add(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "*");
             headers.add(HttpHeaders.ACCESS_CONTROL_MAX_AGE, "3600");
             if (request.getMethod() == HttpMethod.OPTIONS) {

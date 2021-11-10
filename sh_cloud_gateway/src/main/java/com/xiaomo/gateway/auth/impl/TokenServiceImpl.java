@@ -8,7 +8,6 @@ import com.xiaomo.common.exception.enums.AuthExceptionEnum;
 import com.xiaomo.common.jwtutil.JwtPayLoad;
 import com.xiaomo.common.jwtutil.JwtTokenUtil;
 import com.xiaomo.common.pojo.login.SysLoginUser;
-import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

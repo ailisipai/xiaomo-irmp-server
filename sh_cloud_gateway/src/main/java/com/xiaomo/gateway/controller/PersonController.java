@@ -21,19 +21,19 @@ import java.util.ArrayList;
 public class PersonController {
     private ObjectMapper objectMapper;
 
-    @Value("${org.my.jwt.effective-time}")
+   /* @Value("${org.my.jwt.effective-time}")
     private String effectiveTime;
 
     public PersonController(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
-    /**
+    *//**
      * 登陆认证接口
      *
      * @param userDTO
      * @return
-     */
+     *//*
     @PostMapping("/auth/login")
     public IrmpResponse<String> login(@RequestBody UserDTO userDTO) throws Exception {
         ArrayList<String> roleIdList = new ArrayList<>(1);
@@ -71,9 +71,9 @@ public class PersonController {
         return rep;
     }
 
-    /**
+    *//**
      * 为授权提示
-     */
+     *//*
     @GetMapping("/unorized")
     @JWTCheck
     public IrmpResponse<String> unauthorized(@RequestHeader("Authorization") String token) {
@@ -84,11 +84,11 @@ public class PersonController {
         return rep;
     }
 
-    /**
+    *//**
      * jwt 检查注解测试 测试
      *
      * @return
-     */
+     *//*
     @GetMapping("/testJwtCheck")
     @JWTCheck
     public IrmpResponse<String> testJwtCheck(@RequestHeader("Authorization") String token, @RequestParam("name") @Valid String name) {
@@ -99,6 +99,6 @@ public class PersonController {
         rep.setData(name);
         return rep;
 
-    }
+    }*/
 
 }

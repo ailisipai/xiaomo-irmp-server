@@ -9,11 +9,17 @@ eureka:
   instance:
     hostname: localhost
     appname: xiaomo-gateway
-    instance-id: sh_xiaomo_gateway
+    instance-id: sh-xiaomo-gateway
     prefer-ip-address: true
 spring:
   application:
     name: gateway-cloud5002
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.1.4:3306/sh_xiaomo?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: xiaomo
   cloud:
     gateway:
       globalcors:
@@ -23,22 +29,28 @@ spring:
             allowedMethods:
               - GET
               - POST
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
       routes:
-        - id: baidu
-          uri: http://localhost:8761/
+        - id: sh_cloud_server
+          #uri: lb://sh-cloud-server
+          uri: http://localhost:8082
           predicates:
-            - Path=/baidu/**
+          - Path=/auth/**
           filters:
-            - StripPrefix=1
-
-
-
-        - id: sina
-          uri: http://movie.hs6356.com/
-          predicates:
-            - Path=/sina/**
-          filters:
-            - StripPrefix=1
+            - StripPrefix=0 #去掉Path中前0个节点
+            - name: Retry
+              args:
+                retries: 1 #重试次数
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: "ALWAYS"
 org:
   my:
     jwt:
